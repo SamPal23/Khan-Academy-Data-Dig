@@ -49,7 +49,28 @@ WHERE popularity == 1;
 
 /* What percentage of Marvel heros have strength based powers? */
 
+/* shows strongest marvel characters in order */
 SELECT * from marvels
-WHERE strength >= 
+ORDER BY strength DESC;
+
+/* How popular are the strongest Marvel characters? */
+SELECT name, popularity, strength from marvels
+WHERE popularity <= 20 AND strength > 5
+ORDER BY strength DESC;
+
+/* On avergage, how strong are the most popular marvel characters? */
+
+SELECT popularity, name, AVG(strength + fighting_skills) AS power from marvels
+GROUP BY popularity
+HAVING popularity <= 10;
+
+/* How popular are the strongest Marvel characters? */
+SELECT name, popularity, strength from marvels
+WHERE popularity <= 20 AND strength > 5
+ORDER BY strength DESC;
+
+SELECT popularity, name, ROUND(AVG(strength + fighting_skills)) AS power from marvels
+GROUP BY strength;
+
 
 /* correlation between height, weight, and strength based powers for Marvel heros */
